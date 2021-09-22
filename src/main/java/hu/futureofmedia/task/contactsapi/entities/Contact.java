@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 import java.util.UUID;
 
 @Entity
-public class Contacts {
+public class Contact {
     @Id
     private UUID id;
     private Timestamp created_date;

@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS contacts;
+DROP TABLE IF EXISTS contact;
 DROP TABLE IF EXISTS company CASCADE;
 DROP EXTENSION IF EXISTS pgcrypto;
 
@@ -11,7 +11,7 @@ CREATE TABLE company (
     CONSTRAINT pk_company PRIMARY KEY (id)
 );
 
-CREATE TABLE contacts (
+CREATE TABLE contact (
     id              UUID  PRIMARY KEY DEFAULT gen_random_uuid(),
     created_date    TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_date    TIMESTAMP WITHOUT TIME ZONE         NULL,
@@ -24,15 +24,15 @@ CREATE TABLE contacts (
     status          VARCHAR(10)                         NOT NULL
 );
 
-ALTER TABLE ONLY contacts
-    ADD CONSTRAINT fk_contacts_company_id FOREIGN KEY (company) REFERENCES company(id);
+ALTER TABLE ONLY contact
+    ADD CONSTRAINT fk_contact_company_id FOREIGN KEY (company) REFERENCES company(id);
 
 insert into company (name)
 values ('Company #1'),
        ('Company #2'),
        ('Company #3');
 
-INSERT INTO contacts(last_name, first_name, email, company, status)
+INSERT INTO contact(last_name, first_name, email, company, status)
 VALUES
         ('Példa', 'Béla', 'peldabela@gmail.com', 1, 'ACTIVE'),
         ('Git', 'Áron', 'gitaron@gmail.com', 2, 'DELETED'),
