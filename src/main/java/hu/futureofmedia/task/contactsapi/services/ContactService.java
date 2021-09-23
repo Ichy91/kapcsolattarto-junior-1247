@@ -13,7 +13,23 @@ public class ContactService {
     @Autowired
     private ContactRepository contactRepository;
 
-    public List<Contact> findAll() {
+    public List<Contact> getAllContact() {
         return contactRepository.findAll();
+    }
+
+    public List<Contact> getContactById() {
+        return null;
+    }
+
+    public void createNewContact() {
+
+    }
+
+    public void updateContactById() {
+
+    }
+
+    public void deleteContactById() {
+
     }
 }
