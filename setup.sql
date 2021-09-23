@@ -1,8 +1,10 @@
 DROP TABLE IF EXISTS contact;
 DROP TABLE IF EXISTS company CASCADE;
 DROP EXTENSION IF EXISTS pgcrypto;
+DROP TYPE IF EXISTS status_type;
 
 CREATE EXTENSION pgcrypto;
+CREATE TYPE status_type AS ENUM('ACTIVE', 'DELETED');
 
 
 CREATE TABLE company (
@@ -21,7 +23,7 @@ CREATE TABLE contact (
     phone_number    VARCHAR(20)                         NULL,
     company         INTEGER                             NOT NULL,
     note            TEXT                                NULL,
-    status          VARCHAR(10)                         NOT NULL
+    status          status_type                         NOT NULL
 );
 
 ALTER TABLE ONLY contact
@@ -34,8 +36,8 @@ values ('Company #1'),
 
 INSERT INTO contact(last_name, first_name, email, company, status)
 VALUES
-        ('Példa', 'Béla', 'peldabela@gmail.com', 1, 'ACTIVE'),
-        ('Git', 'Áron', 'gitaron@gmail.com', 2, 'DELETED'),
+        ('Pelda', 'Bela', 'peldabela@gmail.com', 1, 'ACTIVE'),
+        ('Git', 'Aron', 'gitaron@gmail.com', 2, 'DELETED'),
         ('Nagy', 'Martin', 'nagymartin@gmail.com', 3, 'ACTIVE'),
-        ('Faragó', 'István', 'farago.istvan@gmail.com', 2, 'ACTIVE'),
-        ('Vereti', 'Péter', 'veretipeter@citromail.com', 3, 'ACTIVE');
+        ('Farago', 'Istvan', 'farago.istvan@gmail.com', 2, 'ACTIVE'),
+        ('Vereti', 'Peter', 'veretipeter@citromail.com', 3, 'ACTIVE');
