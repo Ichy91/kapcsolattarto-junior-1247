@@ -17,7 +17,7 @@ public class Contact {
     private String phone_number;
     private Long company;
     private String note;
-    private Status status;
+    private String status;
 
     public Contact() {
 
@@ -59,7 +59,7 @@ public class Contact {
         return note;
     }
 
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
 }
