@@ -1,13 +1,10 @@
-package hu.futureofmedia.task.contactsapi.entities;
+package hu.futureofmedia.task.contactsapi.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import hu.futureofmedia.task.contactsapi.entities.Contact;
+
 import java.util.UUID;
 
-@Entity
 public class SimpleContact {
-
-    @Id
     private UUID id;
     private String last_name;
     private String first_name;
@@ -15,8 +12,13 @@ public class SimpleContact {
     private String email;
     private String phone_number;
 
-    public SimpleContact() {
-
+    public SimpleContact(Contact contact) {
+        this.id = contact.getId();
+        this.last_name = contact.getLast_name();
+        this.first_name = contact.getFirst_name();
+        this.company = contact.getCompany();
+        this.email = contact.getEmail();
+        this.phone_number = contact.getPhone_number();
     }
 
     public UUID getId() {
