@@ -19,6 +19,10 @@ public class Contact {
     private String note;
     private Status status;
 
+    public Contact() {
+
+    }
+
     public UUID getId() {
         return id;
     }
