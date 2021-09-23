@@ -20,6 +20,7 @@ public class Contact {
     @Enumerated(EnumType.STRING)
     private StatusType status;
 
+
     public Contact() {
 
     }

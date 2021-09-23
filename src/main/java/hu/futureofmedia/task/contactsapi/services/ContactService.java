@@ -37,8 +37,8 @@ public class ContactService {
         return contactRepository.getById(uuid);
     }
 
-    public void createNewContact() {
-
+    public void createNewContact(Contact contact) {
+        contactRepository.save(contact);
     }
 
     public void updateContactById(UUID uuid, TemporaryContact contact) {
@@ -55,7 +55,7 @@ public class ContactService {
         contactRepository.save(contactToUpdate);
     }
 
-    public void deleteContactById(UUID uuid) {
+    public void contactStatusToDeleteById(UUID uuid) {
         Contact contactToDelete = getContactById(uuid);
         contactToDelete.setStatus(StatusType.DELETED);
         contactRepository.save(contactToDelete);
