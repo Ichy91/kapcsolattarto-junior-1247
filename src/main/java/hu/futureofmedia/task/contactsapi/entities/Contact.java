@@ -15,7 +15,7 @@ public class Contact {
     private String first_name;
     private String email;
     private String phone_number;
-    private int company;
+    private Long company;
     private String note;
     private Status status;
 
@@ -47,7 +47,7 @@ public class Contact {
         return phone_number;
     }
 
-    public int getCompany() {
+    public Long getCompany() {
         return company;
     }
 
