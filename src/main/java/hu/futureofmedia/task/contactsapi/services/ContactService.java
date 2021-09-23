@@ -33,16 +33,16 @@ public class ContactService {
         return simpleContacts;
     }
 
-    public Contact getContactById(UUID uuid) {
-        return contactRepository.getById(uuid);
+    public Contact getContactById(UUID id) {
+        return contactRepository.getById(id);
     }
 
     public void createNewContact(Contact contact) {
         contactRepository.save(contact);
     }
 
-    public void updateContactById(UUID uuid, TemporaryContact contact) {
-        Contact contactToUpdate = getContactById(uuid);
+    public void updateContactById(UUID id, TemporaryContact contact) {
+        Contact contactToUpdate = getContactById(id);
 
         contactToUpdate.setUpdated_date(new Timestamp(System.currentTimeMillis()));
         contactToUpdate.setLast_name(contact.getLast_name());
@@ -56,8 +56,8 @@ public class ContactService {
         contactRepository.save(contactToUpdate);
     }
 
-    public void contactStatusToDeleteById(UUID uuid) {
-        Contact contactToDelete = getContactById(uuid);
+    public void contactStatusToDeleteById(UUID id) {
+        Contact contactToDelete = getContactById(id);
         contactToDelete.setStatus(StatusType.DELETED);
         contactRepository.save(contactToDelete);
     }

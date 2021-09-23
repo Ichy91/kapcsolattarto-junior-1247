@@ -11,7 +11,7 @@ public class Contact {
     @Column
     private UUID id;
 
-    @Temporal(TemporalType.TIMESTAMP)
+//    @Temporal(TemporalType.TIMESTAMP)
     @Column
     private Timestamp created_date;
 
