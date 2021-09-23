@@ -7,17 +7,37 @@ import java.util.UUID;
 @Entity
 public class Contact {
     @Id
+    @GeneratedValue
+    @Column
     private UUID id;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column
     private Timestamp created_date;
+
+    @Column
     private Timestamp updated_date;
+
+    @Column
     private String last_name;
+
+    @Column
     private String first_name;
+
+    @Column
     private String email;
+
+    @Column
     private String phone_number;
+
+    @Column
     private Long company;
+
+    @Column
     private String note;
 
     @Enumerated(EnumType.STRING)
+    @Column
     private StatusType status;
 
 

@@ -50,6 +50,7 @@ public class ContactService {
         contactToUpdate.setEmail(contact.getEmail());
         contactToUpdate.setPhone_number(contact.getPhone_number());
         contactToUpdate.setCompany(contact.getCompany());
+        contactToUpdate.setNote(contact.getNote());
         contactToUpdate.setStatus(contact.getStatus());
 
         contactRepository.save(contactToUpdate);

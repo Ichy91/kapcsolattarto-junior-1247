@@ -1,6 +1,5 @@
 package hu.futureofmedia.task.contactsapi.controllers;
 
-import hu.futureofmedia.task.contactsapi.entities.Contact;
 import hu.futureofmedia.task.contactsapi.model.SimpleContact;
 import hu.futureofmedia.task.contactsapi.services.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
