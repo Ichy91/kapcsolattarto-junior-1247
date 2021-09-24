@@ -1,5 +1,8 @@
 package hu.futureofmedia.task.contactsapi.entities;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.UUID;
@@ -12,10 +15,11 @@ public class Contact {
     private UUID id;
 
     @Column
-    @GeneratedValue
+    @CreationTimestamp
     private Timestamp created_date;
 
     @Column
+    @UpdateTimestamp
     private Timestamp updated_date;
 
     @Column
