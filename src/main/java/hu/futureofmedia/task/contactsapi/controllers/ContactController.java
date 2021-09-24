@@ -28,8 +28,14 @@ public class ContactController {
     }
 
     @GetMapping("/contact/{id}")
-    public Map<String, String> getCont(@PathVariable UUID id){
+    public Map<String, String> getCont(@PathVariable UUID id) {
         Contact contact = contactService.getContactById(id);
         return new DataHandler().createOneContactToJson(contact);
+    }
+
+    @PostMapping("/delete")
+    public void contactStatusToDelete(@RequestBody Map<String, Object> body) {
+        UUID id = UUID.fromString(body.get("id").toString());
+        contactService.contactStatusToDeleteById(id);
     }
 }
