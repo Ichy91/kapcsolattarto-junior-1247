@@ -3,6 +3,7 @@ package hu.futureofmedia.task.contactsapi.entities;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.sql.Timestamp;
 import java.util.UUID;
 
@@ -27,6 +28,7 @@ public class Contact {
     private String first_name;
 
     @Column
+    @Email(message = "Email should be valid")
     private String email;
 
     @Column
