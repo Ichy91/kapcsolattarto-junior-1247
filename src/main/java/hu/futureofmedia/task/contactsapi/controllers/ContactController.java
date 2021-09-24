@@ -45,27 +45,32 @@ public class ContactController {
     @GetMapping("/contacts")
     public List<SimpleContact> getContacts() {
         return contactService.getAllSimpleContact();
+        //TODO pagination and order by name;
     }
 
     @GetMapping("/contact/{id}")
     public Contact getContact(@PathVariable UUID id) {
         List<Contact> contact = contactService.getContactById(id);
         return contact.get(0);
+        //TODO errorhandling NOT FOUND;
     }
 
     @PostMapping("/delete")
     public void contactStatusToDelete(@RequestBody Contact contact) {
         contactService.contactStatusToDeleteById(contact);
+        //TODO statuscode
     }
 
     @PostMapping("/update")
     public void contactUpdate(@RequestBody Contact contact) {
         contactService.contactUpdate(contact);
+        //TODO statuscode
     }
 
     @PostMapping("/new-contact")
     public void createNewContact(@RequestBody Map<String, Object> data) {
         Contact contact = dataHandler.createContact(data);
         contactService.createNewContact(contact);
+        //TODO statuscode
     }
 }

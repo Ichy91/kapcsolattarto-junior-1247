@@ -26,4 +26,6 @@ public class DataHandler {
 
         return newContact;
     }
+
+    //TODO validation;
 }
