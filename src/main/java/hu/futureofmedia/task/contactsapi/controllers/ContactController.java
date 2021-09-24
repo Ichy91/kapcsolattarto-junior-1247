@@ -1,5 +1,6 @@
 package hu.futureofmedia.task.contactsapi.controllers;
 
+import hu.futureofmedia.task.contactsapi.datahandler.DataHandler;
 import hu.futureofmedia.task.contactsapi.entities.Company;
 import hu.futureofmedia.task.contactsapi.entities.Contact;
 import hu.futureofmedia.task.contactsapi.model.SimpleContact;
@@ -18,11 +19,13 @@ public class ContactController {
 
     private final ContactService contactService;
     private final CompanyService companyService;
+    private final DataHandler dataHandler;
 
     @Autowired
     public ContactController(ContactService contactService, CompanyService companyService) {
         this.contactService = contactService;
         this.companyService = companyService;
+        this.dataHandler = new DataHandler();
     }
 
     @GetMapping("/companies")
@@ -54,5 +57,11 @@ public class ContactController {
     @PostMapping("/update")
     public void contactUpdate(@RequestBody Contact contact) {
         contactService.contactUpdate(contact);
+    }
+
+    @PostMapping("/new-contact")
+    public void createNewContact(@RequestBody Map<String, Object> data) {
+        Contact contact = dataHandler.createContact(data);
+        contactService.createNewContact(contact);
     }
 }
