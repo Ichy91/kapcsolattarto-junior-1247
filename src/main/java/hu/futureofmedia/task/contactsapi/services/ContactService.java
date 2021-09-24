@@ -2,7 +2,6 @@ package hu.futureofmedia.task.contactsapi.services;
 
 import hu.futureofmedia.task.contactsapi.entities.Contact;
 import hu.futureofmedia.task.contactsapi.entities.StatusType;
-import hu.futureofmedia.task.contactsapi.model.TemporaryContact;
 import hu.futureofmedia.task.contactsapi.model.SimpleContact;
 import hu.futureofmedia.task.contactsapi.repositories.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;

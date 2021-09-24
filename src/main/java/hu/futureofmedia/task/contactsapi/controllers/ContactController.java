@@ -1,5 +1,6 @@
 package hu.futureofmedia.task.contactsapi.controllers;
 
+import hu.futureofmedia.task.contactsapi.entities.Company;
 import hu.futureofmedia.task.contactsapi.entities.Contact;
 import hu.futureofmedia.task.contactsapi.model.SimpleContact;
 import hu.futureofmedia.task.contactsapi.services.ContactService;
@@ -19,6 +20,16 @@ public class ContactController {
     @Autowired
     public ContactController(ContactService contactService) {
         this.contactService = contactService;
+    }
+
+    @GetMapping("/companies")
+    public List<Company> getCompanies() {
+        return null;
+    }
+
+    @GetMapping("/company/{id}")
+    public Company getCompanyById(@PathVariable Long id) {
+        return null;
     }
 
     @GetMapping("/contacts")
