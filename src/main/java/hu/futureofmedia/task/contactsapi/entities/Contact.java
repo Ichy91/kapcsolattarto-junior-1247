@@ -48,6 +48,16 @@ public class Contact {
 
     }
 
+    public Contact(String last_name, String first_name, String email, String phone_number, Long company, String note, StatusType status) {
+        this.last_name = last_name;
+        this.first_name = first_name;
+        this.email = email;
+        this.phone_number = phone_number;
+        this.company = company;
+        this.note = note;
+        this.status = status;
+    }
+
     public UUID getId() {
         return id;
     }
