@@ -42,8 +42,8 @@ public class ContactService {
         contactRepository.save(contact);
     }
 
-    public void updateContactById(UUID id, TemporaryContact contact) {
-        Contact contactToUpdate = getContactById(id).get(0);
+    public void contactUpdate(Contact contact) {
+        Contact contactToUpdate = getContactById(contact.getId()).get(0);
 
         contactToUpdate.setUpdated_date(new Timestamp(System.currentTimeMillis()));
         contactToUpdate.setLast_name(contact.getLast_name());
@@ -52,7 +52,6 @@ public class ContactService {
         contactToUpdate.setPhone_number(contact.getPhone_number());
         contactToUpdate.setCompany(contact.getCompany());
         contactToUpdate.setNote(contact.getNote());
-        contactToUpdate.setStatus(contact.getStatus());
 
         contactRepository.save(contactToUpdate);
     }
