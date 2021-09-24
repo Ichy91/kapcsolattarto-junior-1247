@@ -36,10 +36,9 @@ public class Contact {
     @Column
     private String note;
 
-    @Enumerated(EnumType.STRING)
     @Column
+    @Enumerated(EnumType.STRING)
     private StatusType status;
-
 
     public Contact() {
 
