@@ -56,9 +56,8 @@ public class ContactService {
         contactRepository.save(contactToUpdate);
     }
 
-    public void contactStatusToDeleteById(UUID id) {
-        Contact contactToDelete = getContactById(id).get(0);
-        contactToDelete.setStatus(StatusType.DELETED);
-        contactRepository.save(contactToDelete);
+    public void contactStatusToDeleteById(Contact contact) {
+        contact.setStatus(StatusType.DELETED);
+        contactRepository.save(contact);
     }
 }

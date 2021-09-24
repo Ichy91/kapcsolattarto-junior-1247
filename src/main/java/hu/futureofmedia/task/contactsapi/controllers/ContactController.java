@@ -33,9 +33,8 @@ public class ContactController {
     }
 
     @PostMapping("/delete")
-    public void contactStatusToDelete(@RequestBody Map<String, Object> body) {
-        UUID id = UUID.fromString(body.get("id").toString());
-        contactService.contactStatusToDeleteById(id);
+    public void contactStatusToDelete(@RequestBody Contact contact) {
+        contactService.contactStatusToDeleteById(contact);
     }
 
     @PostMapping("/update")
