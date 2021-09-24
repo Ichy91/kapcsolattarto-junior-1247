@@ -6,13 +6,13 @@ import java.util.UUID;
 
 @Entity
 public class Contact {
+    @Column
     @Id
     @GeneratedValue
-    @Column
     private UUID id;
 
-//    @Temporal(TemporalType.TIMESTAMP)
     @Column
+    @GeneratedValue
     private Timestamp created_date;
 
     @Column
