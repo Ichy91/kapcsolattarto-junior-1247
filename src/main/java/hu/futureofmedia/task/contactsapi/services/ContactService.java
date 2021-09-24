@@ -2,7 +2,6 @@ package hu.futureofmedia.task.contactsapi.services;
 
 import hu.futureofmedia.task.contactsapi.entities.Contact;
 import hu.futureofmedia.task.contactsapi.entities.StatusType;
-import hu.futureofmedia.task.contactsapi.model.TemporaryContact;
 import hu.futureofmedia.task.contactsapi.model.SimpleContact;
 import hu.futureofmedia.task.contactsapi.repositories.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -33,16 +33,16 @@ public class ContactService {
         return simpleContacts;
     }
 
-    public Contact getContactById(UUID uuid) {
-        return contactRepository.getById(uuid);
+    public List<Contact> getContactById(UUID id) {
+        return contactRepository.findAllById(Collections.singleton(id));
     }
 
     public void createNewContact(Contact contact) {
         contactRepository.save(contact);
     }
 
-    public void updateContactById(UUID uuid, TemporaryContact contact) {
-        Contact contactToUpdate = getContactById(uuid);
+    public void contactUpdate(Contact contact) {
+        Contact contactToUpdate = getContactById(contact.getId()).get(0);
 
         contactToUpdate.setUpdated_date(new Timestamp(System.currentTimeMillis()));
         contactToUpdate.setLast_name(contact.getLast_name());
@@ -51,14 +51,12 @@ public class ContactService {
         contactToUpdate.setPhone_number(contact.getPhone_number());
         contactToUpdate.setCompany(contact.getCompany());
         contactToUpdate.setNote(contact.getNote());
-        contactToUpdate.setStatus(contact.getStatus());
 
         contactRepository.save(contactToUpdate);
     }
 
-    public void contactStatusToDeleteById(UUID uuid) {
-        Contact contactToDelete = getContactById(uuid);
-        contactToDelete.setStatus(StatusType.DELETED);
-        contactRepository.save(contactToDelete);
+    public void contactStatusToDeleteById(Contact contact) {
+        contact.setStatus(StatusType.DELETED);
+        contactRepository.save(contact);
     }
 }

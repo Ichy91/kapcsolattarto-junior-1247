@@ -1,18 +1,20 @@
 package hu.futureofmedia.task.contactsapi.entities;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.UUID;
 
 @Entity
 public class Contact {
+    @Column
     @Id
     @GeneratedValue
-    @Column
     private UUID id;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column
+    @CreationTimestamp
     private Timestamp created_date;
 
     @Column
@@ -36,14 +38,14 @@ public class Contact {
     @Column
     private String note;
 
-    @Enumerated(EnumType.STRING)
     @Column
+    @Enumerated(EnumType.STRING)
     private StatusType status;
-
 
     public Contact() {
 
     }
+
 
     public UUID getId() {
         return id;
