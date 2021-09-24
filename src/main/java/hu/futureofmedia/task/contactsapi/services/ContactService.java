@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -33,8 +34,8 @@ public class ContactService {
         return simpleContacts;
     }
 
-    public Contact getContactById(UUID id) {
-        return contactRepository.getById(id);
+    public List<Contact> getContactById(UUID id) {
+        return contactRepository.findAllById(Collections.singleton(id));
     }
 
     public void createNewContact(Contact contact) {
@@ -42,7 +43,7 @@ public class ContactService {
     }
 
     public void updateContactById(UUID id, TemporaryContact contact) {
-        Contact contactToUpdate = getContactById(id);
+        Contact contactToUpdate = getContactById(id).get(0);
 
         contactToUpdate.setUpdated_date(new Timestamp(System.currentTimeMillis()));
         contactToUpdate.setLast_name(contact.getLast_name());
@@ -57,7 +58,7 @@ public class ContactService {
     }
 
     public void contactStatusToDeleteById(UUID id) {
-        Contact contactToDelete = getContactById(id);
+        Contact contactToDelete = getContactById(id).get(0);
         contactToDelete.setStatus(StatusType.DELETED);
         contactRepository.save(contactToDelete);
     }

@@ -1,6 +1,5 @@
 package hu.futureofmedia.task.contactsapi.controllers;
 
-import hu.futureofmedia.task.contactsapi.datahandler.DataHandler;
 import hu.futureofmedia.task.contactsapi.entities.Contact;
 import hu.futureofmedia.task.contactsapi.model.SimpleContact;
 import hu.futureofmedia.task.contactsapi.services.ContactService;
@@ -28,9 +27,9 @@ public class ContactController {
     }
 
     @GetMapping("/contact/{id}")
-    public Map<String, String> getCont(@PathVariable UUID id) {
-        Contact contact = contactService.getContactById(id);
-        return new DataHandler().createOneContactToJson(contact);
+    public Contact getContact(@PathVariable UUID id) {
+        List<Contact> contact = contactService.getContactById(id);
+        return contact.get(0);
     }
 
     @PostMapping("/delete")
@@ -38,4 +37,13 @@ public class ContactController {
         UUID id = UUID.fromString(body.get("id").toString());
         contactService.contactStatusToDeleteById(id);
     }
+
+//    @PostMapping("/update")
+//    public void contactUpdate(@RequestBody Map<String, Object> body) {
+//        UUID id = UUID.fromString(body.get("id").toString());
+//        Contact contact = contactService.getContactById(id);
+//
+//        Contact updatedContact = new DataHandler().updateContact(body, contact);
+//
+//    }
 }
