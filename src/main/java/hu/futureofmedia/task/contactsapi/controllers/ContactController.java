@@ -3,6 +3,7 @@ package hu.futureofmedia.task.contactsapi.controllers;
 import hu.futureofmedia.task.contactsapi.entities.Company;
 import hu.futureofmedia.task.contactsapi.entities.Contact;
 import hu.futureofmedia.task.contactsapi.model.SimpleContact;
+import hu.futureofmedia.task.contactsapi.services.CompanyService;
 import hu.futureofmedia.task.contactsapi.services.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,20 +17,22 @@ import java.util.UUID;
 public class ContactController {
 
     private final ContactService contactService;
+    private final CompanyService companyService;
 
     @Autowired
-    public ContactController(ContactService contactService) {
+    public ContactController(ContactService contactService, CompanyService companyService) {
         this.contactService = contactService;
+        this.companyService = companyService;
     }
 
     @GetMapping("/companies")
     public List<Company> getCompanies() {
-        return null;
+        return companyService.getAllCompany();
     }
 
     @GetMapping("/company/{id}")
     public Company getCompanyById(@PathVariable Long id) {
-        return null;
+        return companyService.getCompanyById(id);
     }
 
     @GetMapping("/contacts")
