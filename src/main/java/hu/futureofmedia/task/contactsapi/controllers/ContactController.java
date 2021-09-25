@@ -56,8 +56,8 @@ public class ContactController {
     }
 
     @PostMapping("/delete")
-    public void contactStatusToDelete(@RequestBody Contact contact) {
-        contactService.contactStatusToDeleteById(contact);
+    public void contactStatusToDeleted(@RequestBody Contact contact) {
+        contactService.contactStatusToDeleted(contact);
         //TODO statuscode
     }
 
@@ -68,9 +68,9 @@ public class ContactController {
     }
 
     @PostMapping("/new-contact")
-    public void createNewContact(@RequestBody Map<String, Object> data) {
-        Contact contact = dataHandler.createContact(data);
-        contactService.createNewContact(contact);
+    public void addNewContact(@RequestBody Map<String, Object> data) {
+        Contact newContact = dataHandler.createNewContact(data);
+        contactService.addNewContactToDb(newContact);
         //TODO statuscode
     }
 }

@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class DataHandler {
 
-    public Contact createContact(Map<String, Object> data) {
+    public Contact createNewContact(Map<String, Object> data) {
         Contact newContact = new Contact();
 
         newContact.setLast_name(data.get("last_name").toString());

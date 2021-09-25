@@ -37,7 +37,7 @@ public class ContactService {
         return contactRepository.findAllById(Collections.singleton(id));
     }
 
-    public void createNewContact(Contact contact) {
+    public void addNewContactToDb(Contact contact) {
         contactRepository.save(contact);
     }
 
@@ -55,7 +55,7 @@ public class ContactService {
         contactRepository.save(contactToUpdate);
     }
 
-    public void contactStatusToDeleteById(Contact contact) {
+    public void contactStatusToDeleted(Contact contact) {
         contact.setStatus(StatusType.DELETED);
         contactRepository.save(contact);
     }
