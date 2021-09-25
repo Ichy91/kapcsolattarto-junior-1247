@@ -62,8 +62,8 @@ public class ContactController {
     }
 
     @PostMapping("/update")
-    public void contactUpdate(@RequestBody Contact contact) {
-        contactService.contactUpdate(contact);
+    public void contactUpdate(@RequestBody Contact contactWithNewData) {
+        contactService.contactUpdate(contactWithNewData);
         //TODO statuscode
     }
 

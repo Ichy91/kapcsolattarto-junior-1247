@@ -41,16 +41,16 @@ public class ContactService {
         contactRepository.save(contact);
     }
 
-    public void contactUpdate(Contact contact) {
-        Contact contactToUpdate = getContactById(contact.getId()).get(0);
+    public void contactUpdate(Contact contactWithNewData) {
+        Contact contactToUpdate = getContactById(contactWithNewData.getId()).get(0);
 
         contactToUpdate.setUpdated_date(new Timestamp(System.currentTimeMillis()));
-        contactToUpdate.setLast_name(contact.getLast_name());
-        contactToUpdate.setFirst_name(contact.getFirst_name());
-        contactToUpdate.setEmail(contact.getEmail());
-        contactToUpdate.setPhone_number(contact.getPhone_number());
-        contactToUpdate.setCompany(contact.getCompany());
-        contactToUpdate.setNote(contact.getNote());
+        contactToUpdate.setLast_name(contactWithNewData.getLast_name());
+        contactToUpdate.setFirst_name(contactWithNewData.getFirst_name());
+        contactToUpdate.setEmail(contactWithNewData.getEmail());
+        contactToUpdate.setPhone_number(contactWithNewData.getPhone_number());
+        contactToUpdate.setCompany(contactWithNewData.getCompany());
+        contactToUpdate.setNote(contactWithNewData.getNote());
 
         contactRepository.save(contactToUpdate);
     }
