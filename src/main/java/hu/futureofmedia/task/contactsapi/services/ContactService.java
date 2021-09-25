@@ -8,7 +8,6 @@ import hu.futureofmedia.task.contactsapi.repositories.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
 import java.util.*;
 
 @Service
@@ -47,16 +46,9 @@ public class ContactService {
 
     public void contactUpdate(Contact contactWithNewData) {
         Contact contactToUpdate = getContactById(contactWithNewData.getId()).get(0);
+        Contact updatedContact = dataHandler.updatingContact(contactToUpdate, contactWithNewData);
 
-        contactToUpdate.setUpdated_date(new Timestamp(System.currentTimeMillis()));
-        contactToUpdate.setLast_name(contactWithNewData.getLast_name());
-        contactToUpdate.setFirst_name(contactWithNewData.getFirst_name());
-        contactToUpdate.setEmail(contactWithNewData.getEmail());
-        contactToUpdate.setPhone_number(contactWithNewData.getPhone_number());
-        contactToUpdate.setCompany(contactWithNewData.getCompany());
-        contactToUpdate.setNote(contactWithNewData.getNote());
-
-        contactRepository.save(contactToUpdate);
+        contactRepository.save(updatedContact);
     }
 
     public void contactStatusToDeleted(Contact contact) {

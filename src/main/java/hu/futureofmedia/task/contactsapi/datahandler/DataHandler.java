@@ -3,6 +3,7 @@ package hu.futureofmedia.task.contactsapi.datahandler;
 import hu.futureofmedia.task.contactsapi.entities.Contact;
 import hu.futureofmedia.task.contactsapi.entities.StatusType;
 
+import java.sql.Timestamp;
 import java.util.Map;
 
 public class DataHandler {
@@ -25,6 +26,18 @@ public class DataHandler {
         else newContact.setNote(null);
 
         return newContact;
+    }
+
+    public Contact updatingContact(Contact contactToUpdate, Contact contactWithNewData) {
+        contactToUpdate.setUpdated_date(new Timestamp(System.currentTimeMillis()));
+        contactToUpdate.setLast_name(contactWithNewData.getLast_name());
+        contactToUpdate.setFirst_name(contactWithNewData.getFirst_name());
+        contactToUpdate.setEmail(contactWithNewData.getEmail());
+        contactToUpdate.setPhone_number(contactWithNewData.getPhone_number());
+        contactToUpdate.setCompany(contactWithNewData.getCompany());
+        contactToUpdate.setNote(contactWithNewData.getNote());
+
+        return contactToUpdate;
     }
 
     //TODO validation;
