@@ -18,13 +18,11 @@ public class ContactController {
 
     private final ContactService contactService;
     private final CompanyService companyService;
-    private final DataHandler dataHandler;
 
     @Autowired
     public ContactController(ContactService contactService, CompanyService companyService) {
         this.contactService = contactService;
         this.companyService = companyService;
-        this.dataHandler = new DataHandler();
     }
 
     @GetMapping("/companies")
@@ -69,8 +67,7 @@ public class ContactController {
 
     @PostMapping("/new-contact")
     public void addNewContact(@RequestBody Map<String, Object> data) {
-        Contact newContact = dataHandler.createNewContact(data);
-        contactService.addNewContactToDb(newContact);
+        contactService.addNewContactToDb(data);
         //TODO statuscode
     }
 }

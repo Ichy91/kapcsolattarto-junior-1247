@@ -1,5 +1,6 @@
 package hu.futureofmedia.task.contactsapi.services;
 
+import hu.futureofmedia.task.contactsapi.datahandler.DataHandler;
 import hu.futureofmedia.task.contactsapi.entities.Contact;
 import hu.futureofmedia.task.contactsapi.entities.StatusType;
 import hu.futureofmedia.task.contactsapi.model.SimpleContact;
@@ -8,16 +9,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class ContactService {
+    private final ContactRepository contactRepository;
+    private final DataHandler dataHandler;
 
     @Autowired
-    private ContactRepository contactRepository;
+    public ContactService(ContactRepository contactRepository) {
+        this.contactRepository = contactRepository;
+        this.dataHandler = new DataHandler();
+    }
 
     private List<Contact> getAllActiveContact() {
 //        return contactRepository.findAllByStatusOrderByLast_nameAsc(StatusType.ACTIVE); //Not work
@@ -37,8 +40,9 @@ public class ContactService {
         return contactRepository.findAllById(Collections.singleton(id));
     }
 
-    public void addNewContactToDb(Contact contact) {
-        contactRepository.save(contact);
+    public void addNewContactToDb(Map<String, Object> data) {
+        Contact newContact = dataHandler.createNewContact(data);
+        contactRepository.save(newContact);
     }
 
     public void contactUpdate(Contact contactWithNewData) {
