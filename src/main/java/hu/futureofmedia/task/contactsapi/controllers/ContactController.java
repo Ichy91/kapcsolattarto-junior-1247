@@ -1,6 +1,5 @@
 package hu.futureofmedia.task.contactsapi.controllers;
 
-import hu.futureofmedia.task.contactsapi.datahandler.DataHandler;
 import hu.futureofmedia.task.contactsapi.entities.Company;
 import hu.futureofmedia.task.contactsapi.entities.Contact;
 import hu.futureofmedia.task.contactsapi.entities.StatusType;
